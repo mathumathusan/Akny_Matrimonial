@@ -27,26 +27,32 @@
                                 <p>Not a member? <a href="/signup">Sign up now</a></p>
                             </div>
                             <div class="form-login">
-                                <form>
+                                <form method="POST" action="{{ url('/login') }}">
+                                    @csrf
                                     <div class="form-group">
                                         <label class="lb">Email:</label>
                                         <input type="email" class="form-control" id="email"
-                                            placeholder="Enter email" name="email">
+                                            placeholder="Enter email" name="email" value="{{ old('email') }}" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="lb">Password:</label>
                                         <input type="password" class="form-control" id="pwd"
-                                            placeholder="Enter password" name="pswd">
+                                            placeholder="Enter password" name="password" required>
                                     </div>
                                     <div class="form-group form-check">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" name="agree"> Remember
+                                            <input class="form-check-input" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember
                                             me
                                         </label>
                                     </div>
                                     <button type="submit" class="btn btn-primary">Sign in</button>
                                 </form>
                             </div>
+                            @if ($errors->any())
+                            <div class="alert alert-danger mt-2">
+                                {{ $errors->first() }}
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
