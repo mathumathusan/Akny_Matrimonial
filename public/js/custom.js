@@ -34,9 +34,9 @@ $(document).ready(function () {
     $("#shareurl").val(_cururl);
 
     //AGENT WINDOW OPEN
-    $('.head-pro').on('click', function () {
-        $('.menu-pop2, .pop-bg').addClass('act');
-    });
+    // $('.head-pro').on('click', function () {
+    //     $('.menu-pop2, .pop-bg').addClass('act');
+    // });
     $('.ser-open').on('click', function () {
         $('.pop-search').show();
     });

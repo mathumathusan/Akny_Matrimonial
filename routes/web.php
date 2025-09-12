@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/profile', function () {
     return view('profile_edit');
 });
+
+Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
 
 
 

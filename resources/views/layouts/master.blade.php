@@ -367,14 +367,19 @@
                             // Fetch user from DB using session user_id
                             $user = \App\Models\Users::find(Session::get('user_id'));
                             @endphp
-                            <img src="images/profiles/1.jpg" alt="Profile" style="border-radius: 50%;" loading="lazy">
+                            <a href="{{ url('/profile') }}">
+                                <img src="{{ asset('images/profiles/1.jpg') }}" alt="Profile"
+                                    style="border-radius: 50%;" loading="lazy">
+                            </a>
+
                             <b>{{ $user->role ?? 'User' }}</b><br>
                             <h4>{{ $user->name }}</h4>
+
                             @else
                             {{-- Display only default round profile image --}}
-                            <img src=""  style="border-radius: 50%;" loading="lazy">
+                            <img src="" style="border-radius: 50%;" loading="lazy">
                             @endif
-                            <span class="fclick"></span>
+
                         </div>
                     </div>
 
