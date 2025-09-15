@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
@@ -17,6 +18,14 @@ Route::get('/signup', [RegisterController::class, 'showRegistrationForm'])->name
 Route::post('/signup', [RegisterController::class, 'register']);
 
 
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+Route::post('/users/{id}/approve', [AdminController::class, 'approve'])->name('users.approve');
+
+
+
+Route::get('/users/{id}', [AdminController::class, 'show'])->name('users.show');
 
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
