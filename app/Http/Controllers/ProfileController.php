@@ -77,4 +77,47 @@ class ProfileController extends Controller
 
     return redirect()->back()->with('success', 'Profile submitted successfully!');
 }
+
+public function index()
+{
+    // Get all profiles with their photos
+    $profiles = DB::table('profiles')
+        ->leftJoin('profile_photos', 'profiles.id', '=', 'profile_photos.profile_id')
+        ->select(
+            'profiles.*',
+            DB::raw('GROUP_CONCAT(profile_photos.photo_path) as photos')
+        )
+        ->groupBy('profiles.id')
+        ->orderBy('profiles.created_at', 'desc')
+        ->get();
+
+    return view('allprofiles', compact('profiles'));
+}
+
+
+public function showProfile($id)
+{
+    $profile = DB::table('profiles')
+        ->leftJoin('profile_photos', 'profiles.id', '=', 'profile_photos.profile_id')
+        ->select(
+            'profiles.*',
+            DB::raw('GROUP_CONCAT(profile_photos.photo_path) as photos')
+        )
+        ->where('profiles.id', $id)
+        ->groupBy('profiles.id')
+        ->first();
+
+    // Convert photos to array
+    if ($profile && $profile->photos) {
+        $profile->photos = explode(',', $profile->photos);
+    } else {
+        $profile->photos = [];
+    }
+
+    return view('profiledetails', compact('profile'));
+}
+
+
+
+
 }

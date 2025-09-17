@@ -39,6 +39,13 @@ Route::get('/profile', function () {
 Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
 
 
+Route::get('/allprofiles',[ProfileController::class, 'index'])->name('allprofiles');
+
+// Route::get('/profiles', [ProfileController::class, 'showProfile'])->name('profile.show');
+
+
+Route::get('/profile/{id}', [ProfileController::class, 'showProfile']);
+
 
 Route::get('/chart', function () {
     return view('chart_edit');
