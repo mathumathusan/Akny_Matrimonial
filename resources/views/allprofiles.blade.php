@@ -7,7 +7,28 @@
 
 
 
+<style>
+    .profile-card {
+    width: 250px;       /* Set card width */
+    height: 350px;      /* Set card height */
+    overflow: hidden;   /* hide overflow if image bigger */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    margin: 10px;
+}
 
+.profile-photo {
+    width: 100%;
+    height: 70%;
+    object-fit: contain;
+    object-position: center top; /* centers horizontally, aligns top vertically */
+    background-color: #f0f0f0;
+}
+
+
+
+</style>
 
 
 
@@ -201,13 +222,13 @@
                 <div class="all-pro-box {{ $loop->index % 2 == 0 ? 'user-avil-onli' : '' }}">
                     
                     <!-- PROFILE IMAGE -->
-                    <div class="pro-img">
+                    <div class="pro-img" class="profile-card">
                         <a href="{{ url('profile/'.$profile->id) }}">
                             @php
                                 $photos = $profile->photos ? explode(',', $profile->photos) : [];
                             @endphp
                             @if(count($photos) > 0)
-                                <img src="{{ asset('storage/'.$photos[0]) }}" alt="{{ $profile->name }}">
+                                <img src="{{ asset('storage/'.$photos[0]) }}"  class="profile-photo"  alt="{{ $profile->name }}" >
                             @else
                                 <img src="{{ asset('images/default-avatar.png') }}" alt="default">
                             @endif

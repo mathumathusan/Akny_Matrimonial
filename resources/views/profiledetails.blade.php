@@ -11,8 +11,12 @@
                 <div class="profile">
                     <div class="pg-pro-big-im">
                         <div class="s1">
-                       <img src="{{ isset($profile->photos[0]) ? asset('storage/' . $profile->photos[0]) : asset('images/default-profile.jpg') }}"
-                                loading="lazy" class="pro" alt="">
+                       <img 
+    src="{{ isset($profile->photos[0]) ? asset('storage/' . $profile->photos[0]) : asset('images/default-profile.jpg') }}"
+    loading="lazy" 
+    alt="{{ $profile->name ?? 'Profile' }}"
+    style="width: 100%; height: auto; object-fit: contain; border-radius: 8px;">
+
                         </div>
                         <div class="s3">
                             <a href="#!" class="cta fol cta-chat">Chat now</a>
@@ -64,7 +68,7 @@
 
                         <!-- About -->
                         <div class="pr-bio-c pr-bio-abo">
-                            <h3>About</h3>
+                            <h3>Expectations</h3>
                             <p>{{ $profile->expectation?? 'No bio available.' }}</p>
                         </div>
                         <!-- END About -->

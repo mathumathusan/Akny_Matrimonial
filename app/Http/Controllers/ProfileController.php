@@ -87,6 +87,7 @@ public function index()
             'profiles.*',
             DB::raw('GROUP_CONCAT(profile_photos.photo_path) as photos')
         )
+         ->where('profiles.isApprove', 1)
         ->groupBy('profiles.id')
         ->orderBy('profiles.created_at', 'desc')
         ->get();

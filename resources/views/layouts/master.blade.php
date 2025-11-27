@@ -60,8 +60,9 @@
     <div class="menu-pop menu-pop1">
         <span class="menu-pop-clo"><i class="fa fa-times" aria-hidden="true"></i></span>
         <div class="inn">
-            <img src="https://aknymatrimony.com/wp-content/uploads/2024/06/Untitled-design-e1717264338223.png" alt="" loading="lazy" class="logo-brand-only">
-            <strong>Akny Matrimo</strong>
+            {{--<img src="https://aknymatrimony.com/wp-content/uploads/2024/06/Untitled-design-e1717264338223.png" alt="" loading="lazy" class="logo-brand-only">--}}
+            <img src="images/logo2.png"  alt="" loading="lazy" class="logo-brand-only">
+            
             <p><strong>Best Wedding Matrimony</strong> lacinia viverra lectus. Fusce imperdiet ullamcorper metus eu fringilla. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             <ul class="menu-pop-info">
                 <li><a href="#!"><i class="fa fa-phone" aria-hidden="true"></i>+92 (8800) 68 - 8960</a></li>
@@ -101,17 +102,18 @@
                 <div class="hom-nav">
                     <!-- LOGO -->
                     <div class="logo">
-                        <span class="menu desk-menu"><i></i><i></i><i></i></span>
+                        <span class="menu desk-menu" style="color: red;background-color: red;"><i></i><i></i><i></i></span>
                         <a href="index.html" class="logo-brand">
-                            <img src="https://aknymatrimony.com/wp-content/uploads/2024/06/Untitled-design-e1717264338223.png" alt="" loading="lazy" class="ic-logo">
+                            {{--<img src="https://aknymatrimony.com/wp-content/uploads/2024/06/Untitled-design-e1717264338223.png" alt="" loading="lazy" class="ic-logo">--}}
+                            <img src="images/logo2.png" alt="" loading="lazy" class="ic-logo">
                         </a>
                     </div>
 
                     <!-- NAVIGATION -->
                     <div class="bl">
                         <ul>
-                            <li class="smenu-pare"><span class="smenu">Explore</span></li>
-                            <li><a href="plans.html">Plans</a></li>
+                            {{--<li class="smenu-pare"><span class="smenu">Explore</span></li>--}}
+                            <li><a href="/allprofiles">Profiles</a></li>
                             <li><a href="/signup">Register</a></li>
                             <li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
