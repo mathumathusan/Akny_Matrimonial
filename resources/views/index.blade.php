@@ -16,52 +16,54 @@
                             <p>Most trusted Matrimony Brand in the World.</p>
                         </div>
                         <div class="ban-search chosenini">
-                            <form>
+                            <form method="GET" action="{{ route('allprofiles') }}">
                                 <ul>
                                     <li class="sr-look">
                                         <div class="form-group">
                                             <label>I'm looking for</label>
-                                            <select class="chosen-select">
+                                            <select class="chosen-select" name="looking_for">
                                                 <option value="">I'm looking for</option>
-                                                <option value="Men">Men</option>
-                                                <option value="Women">Women</option>
+                                                <option value="male">Men</option>
+                                                <option value="female">Women</option>
                                             </select>
                                         </div>
                                     </li>
+
                                     <li class="sr-age">
                                         <div class="form-group">
                                             <label>Age</label>
-                                            <select class="chosen-select">
+                                            <select class="chosen-select" name="age">
                                                 <option value="">Age</option>
-                                                <option value="">18 to 30</option>
-                                                <option value="">31 to 40</option>
-                                                <option value="">41 to 50</option>
-                                                <option value="">51 to 60</option>
-                                                <option value="">61 to 70</option>
-                                                <option value="">71 to 80</option>
-                                                <option value="">81 to 90</option>
-                                                <option value="">91 to 100</option>
+                                                <option value="18-30">18 to 30</option>
+                                                <option value="31-40">31 to 40</option>
+                                                <option value="41-50">41 to 50</option>
+                                                <option value="51-60">51 to 60</option>
+                                                <option value="61-70">61 to 70</option>
+                                                <option value="71-80">71 to 80</option>
+                                                <option value="81-90">81 to 90</option>
+                                                <option value="91-100">91 to 100</option>
                                             </select>
                                         </div>
                                     </li>
+
                                     <li class="sr-reli">
                                         <div class="form-group">
                                             <label>Religion</label>
-                                            <select class="chosen-select">
-                                                <option>Religion</option>
-                                                <option>Any</option>
-                                                <option>Hindu</option>
-                                                <option>Muslim</option>
-                                                <option>Jain</option>
-                                                <option>Christian</option>
+                                            <select class="chosen-select" name="religion">
+                                                <option value="">Religion</option>
+                                                <option value="hindu">Hindu</option>
+                                                <option value="Muslim">Muslim</option>
+                                                <option value="catholic">Catholic</option>
+                                                <option value="buddhist">Buddhism</option>
+                                                <option value="nrc">others</option>
                                             </select>
                                         </div>
                                     </li>
                                     <li class="sr-cit">
                                         <div class="form-group">
                                             <label>City</label>
-                                            <select class="chosen-select">
-                                                <option>Location</option>
+                                            <select class="chosen-select" name="city">
+                                                <option value="">Location</option>
                                                 <option>Any location</option>
                                                 <option>Chennai</option>
                                                 <option>New york</option>
@@ -572,7 +574,7 @@
                         <img src="images/couple1.jpg" alt="" loading="lazy">
                         <div class="bx">
                             <h4>Abishek & Shankavi <span>Jaffna</span></h4>
-                            <a href="wedding-video.html" class="sml-cta cta-dark">View more</a>
+                            <a href="#" class="sml-cta cta-dark">View more</a>
                         </div>
                     </div>
                 </li>
@@ -582,7 +584,7 @@
                         <img src="images/couple2.jpg" alt="" loading="lazy">
                         <div class="bx">
                             <h4>Menon & Kisho <span>Batticalo</span></h4>
-                            <a href="wedding-video.html" class="sml-cta cta-dark">View more</a>
+                            <a href="#" class="sml-cta cta-dark">View more</a>
                         </div>
                     </div>
                 </li>
@@ -592,7 +594,7 @@
                         <img src="images/couple3.jpg" alt="" loading="lazy">
                         <div class="bx">
                             <h4>Jana & Thasi <span>Jaffna</span></h4>
-                            <a href="wedding-video.html" class="sml-cta cta-dark">View more</a>
+                            <a href="#" class="sml-cta cta-dark">View more</a>
                         </div>
                     </div>
                 </li>
@@ -602,7 +604,7 @@
                         <img src="images/couple4.jpg" alt="" loading="lazy">
                         <div class="bx">
                             <h4>Thanujan & Sutharsika <span>Trinco</span></h4>
-                            <a href="wedding-video.html" class="sml-cta cta-dark">View more</a>
+                            <a href="#" class="sml-cta cta-dark">View more</a>
                         </div>
                     </div>
                 </li>
@@ -612,7 +614,7 @@
                         <img src="images/couple1.jpg" alt="" loading="lazy">
                         <div class="bx">
                             <h4>Abishek & Shankavi <span>Jaffna</span></h4>
-                            <a href="wedding-video.html" class="sml-cta cta-dark">View more</a>
+                            <a href="#" class="sml-cta cta-dark">View more</a>
                         </div>
                     </div>
                 </li>
@@ -622,7 +624,7 @@
                         <img src="images/couple2.jpg" alt="" loading="lazy">
                         <div class="bx">
                             <h4>Menon & Kisho <span>Batticalo</span></h4>
-                            <a href="wedding-video.html" class="sml-cta cta-dark">View more</a>
+                            <a href="#" class="sml-cta cta-dark">View more</a>
                         </div>
                     </div>
                 </li>
@@ -632,7 +634,7 @@
                         <img src="images/couple3.jpg" alt="" loading="lazy">
                         <div class="bx">
                             <h4>Jana & Thasi <span>Jaffna</span></h4>
-                            <a href="wedding-video.html" class="sml-cta cta-dark">View more</a>
+                            <a href="#" class="sml-cta cta-dark">View more</a>
                         </div>
                     </div>
                 </li>
@@ -642,7 +644,7 @@
                         <img src="images/couple4.jpg" alt="" loading="lazy">
                         <div class="bx">
                             <h4>Thanujan & Sutharsika <span>Trinco</span></h4>
-                            <a href="wedding-video.html" class="sml-cta cta-dark">View more</a>
+                            <a href="#" class="sml-cta cta-dark">View more</a>
                         </div>
                     </div>
                 </li>
@@ -738,17 +740,30 @@
             <div class="row">
                 <div class="fot-ban-inn">
                     <div class="lhs">
-                        <h2>Find your perfect Match now</h2>
-                        <p>lacinia viverra lectus. Fusce imperdiet ullamcorper metus eu fringilla.Lorem Ipsum is
-                            simply dummy text of the printing and typesetting industry.</p>
-                        <a href="sign-up.html" class="cta-3">Register Now</a>
-                        <a href="sign-up.html" class="cta-4">Help & Support</a>
+                        <h2>Find Your Perfect Match Today</h2>
+                        <p>Discover like-minded people and connect with potential partners easily. Start your journey towards meaningful relationships now.</p>
+                        <a href="/signup" class="cta-3">Register Now</a>
+                        <a href="#" class="cta-4">Help & Support</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 <!-- END -->
 
+
+
+
+@if(session('success'))
+<script>
+    Swal.fire({
+        title: 'Success!',
+        text: "{{ session('success') }}",
+        icon: 'success',
+        confirmButtonText: 'OK'
+    });
+</script>
+@endif
 @endsection

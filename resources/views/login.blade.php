@@ -39,12 +39,7 @@
                                         <input type="password" class="form-control" id="pwd"
                                             placeholder="Enter password" name="password" required>
                                     </div>
-                                    <div class="form-group form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember
-                                            me
-                                        </label>
-                                    </div>
+                                
                                     <button type="submit" class="btn btn-primary">Sign in</button>
                                 </form>
                             </div>
@@ -62,5 +57,28 @@
     </div>
 </section>
 <!-- END -->
+
+@if(session('error'))
+<script>
+    Swal.fire({
+        title: 'Login Failed',
+        text: "{{ session('error') }}",
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });
+</script>
+@endif
+
+
+@if(session('success'))
+<script>
+    Swal.fire({
+        title: 'Success!',
+        text: "{{ session('success') }}",
+        icon: 'success',
+        confirmButtonText: 'OK'
+    });
+</script>
+@endif
 
 @endsection

@@ -80,6 +80,7 @@
                                                 <option value="">Select Religion</option>
                                                 <option value="hindu">Hinduism</option>
                                                 <option value="catholic">Catholic</option>
+                                                <option value="buddhist">Buddhism</option>
                                                 <option value="nrc">NRC</option>
                                                 <option value="others">Others</option>
                                             </select>
@@ -102,23 +103,56 @@
                                             <label class="lb">Rasi:</label>
                                             <select class="form-select" name="rasi" id="rasi">
                                                 <option value="">Select Rasi</option>
-                                                <option value="A">A</option>
-                                                <option value="B">B</option>
-                                                <option value="C">C</option>
-                                                <option value="D">D</option>
+                                                <option value="Aries">Aries - மேஷம்</option>
+                                                <option value="Taurus">Taurus - ரிஷபம்</option>
+                                                <option value="Gemini">Gemini - மிதுனம்</option>
+                                                <option value="Cancer">Cancer - கடகம்</option>
+                                                <option value="Leo">Leo - சிம்மம்</option>
+                                                <option value="Virgo">Virgo - கன்னி</option>
+                                                <option value="Libra">Libra - துலாம்</option>
+                                                <option value="Scorpio">Scorpio - விருச்சிகம்</option>
+                                                <option value="Sagittarius">Sagittarius - தனுசு</option>
+                                                <option value="Capricorn">Capricorn - மகரம்</option>
+                                                <option value="Aquarius">Aquarius - கும்பம்</option>
+                                                <option value="Pisces">Pisces - மீனம்</option>
                                             </select>
                                         </div>
+
                                         <div class="col-md-6 form-group">
                                             <label class="lb">Star (Nakshatra):</label>
                                             <select class="form-select" name="nakshatra" id="nakshatra">
                                                 <option value="">Select Star</option>
-                                                <option value="A">A</option>
-                                                <option value="B">B</option>
-                                                <option value="C">C</option>
-                                                <option value="D">D</option>
+                                                <option value="Ashwini">Ashwini - அச்வினி</option>
+                                                <option value="Bharani">Bharani - பாரணி</option>
+                                                <option value="Krittika">Krittika - கிருத்திகா</option>
+                                                <option value="Rohini">Rohini - ரோகிணி</option>
+                                                <option value="Mrigashirsha">Mrigashirsha - மிருகசிரிஷம்</option>
+                                                <option value="Ardra">Ardra - ஆர்த்ரா</option>
+                                                <option value="Punarvasu">Punarvasu - புனர்பூசம்</option>
+                                                <option value="Pushya">Pushya - புஷ்யம்</option>
+                                                <option value="Ashlesha">Ashlesha - ஆஸ்லேஷா</option>
+                                                <option value="Magha">Magha - மகா</option>
+                                                <option value="Purva Phalguni">Purva Phalguni - பூர்வ பிள்குனி</option>
+                                                <option value="Uttara Phalguni">Uttara Phalguni - உத்தர பிள்குனி</option>
+                                                <option value="Hasta">Hasta - ஹஸ்தா</option>
+                                                <option value="Chitra">Chitra - சித்திரா</option>
+                                                <option value="Swati">Swati - ஸ்வாதி</option>
+                                                <option value="Vishakha">Vishakha - விசாகம்</option>
+                                                <option value="Anuradha">Anuradha - அனுராதா</option>
+                                                <option value="Jyeshtha">Jyeshtha - ஜ்யேஷ்டா</option>
+                                                <option value="Mula">Mula - மூலம்</option>
+                                                <option value="Purva Ashadha">Purva Ashadha - பூர்வாஷாதா</option>
+                                                <option value="Uttara Ashadha">Uttara Ashadha - உத்திராஷாதா</option>
+                                                <option value="Shravana">Shravana - திருவோணம்</option>
+                                                <option value="Dhanishta">Dhanishta - தனுஷ்டா</option>
+                                                <option value="Shatabhisha">Shatabhisha - சதபிஷா</option>
+                                                <option value="Purva Bhadrapada">Purva Bhadrapada - பூர்வ பத்திரபதா</option>
+                                                <option value="Uttara Bhadrapada">Uttara Bhadrapada - உத்திர பத்திரபதா</option>
+                                                <option value="Revati">Revati - ரேவதி</option>
                                             </select>
                                         </div>
                                     </div>
+
 
                                     <div class="row">
                                         <div class="col-md-6 form-group">
@@ -220,47 +254,80 @@
     </div>
 </section>
 
+@if(session('validation_errors'))
+<script>
+Swal.fire({
+    title: 'Validation Errors',
+    html: `{!! implode('<br>', session('validation_errors')) !!}`,
+    icon: 'error',
+    confirmButtonText: 'OK'
+});
+</script>
+@endif
+
+{{-- OTHER ERRORS --}}
+@if(session('error'))
+<script>
+Swal.fire({
+    title: 'Error!',
+    text: "{{ session('error') }}",
+    icon: 'error',
+    confirmButtonText: 'OK'
+});
+</script>
+@endif
+
 <!-- JS FOR MULTI-STEP -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    let currentStep = 0;
-    const steps = document.querySelectorAll(".form-step");
-    const nextBtns = document.querySelectorAll(".next-btn");
-    const prevBtns = document.querySelectorAll(".prev-btn");
-    const form = document.querySelector("form");
+    document.addEventListener("DOMContentLoaded", function() {
+        let currentStep = 0;
+        const steps = document.querySelectorAll(".form-step");
+        const nextBtns = document.querySelectorAll(".next-btn");
+        const prevBtns = document.querySelectorAll(".prev-btn");
+        const form = document.querySelector("form");
 
-    function showStep(step) {
-        steps.forEach((s, i) => {
-            s.classList.toggle("active", i === step);
-        });
-    }
+        function showStep(step) {
+            steps.forEach((s, i) => {
+                s.classList.toggle("active", i === step);
+            });
+        }
 
-    nextBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            if (currentStep < steps.length - 1) {
-                currentStep++;
-                showStep(currentStep);
-            }
+        nextBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            });
         });
+
+        prevBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            });
+        });
+
+        showStep(currentStep);
     });
-
-    prevBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            if (currentStep > 0) {
-                currentStep--;
-                showStep(currentStep);
-            }
-        });
-    });
-
-    showStep(currentStep);
-});
 </script>
 
 <style>
-.form-step { display: none; }
-.form-step.active { display: block; }
-.form-navigation { margin-top: 20px; }
+    .form-step {
+        display: none;
+    }
+
+    .form-step.active {
+        display: block;
+    }
+
+    .form-navigation {
+        margin-top: 20px;
+    }
 </style>
+
+
 
 @endsection

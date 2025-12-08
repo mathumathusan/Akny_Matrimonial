@@ -30,12 +30,13 @@ class LoginController extends Controller
             $request->session()->regenerate();
             $user = Auth::user();
             Session::put('user_id', $user->id);
-            return redirect()->intended('/');
+            return redirect()->intended('/allprofiles')
+                ->with('success', 'Login successful!');
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->withInput();
+        return back()
+            ->with('error', 'Incorrect email or password!')
+            ->withInput();
     }
 
     public function logout(Request $request)

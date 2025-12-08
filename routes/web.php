@@ -21,6 +21,16 @@ Route::post('/signup', [RegisterController::class, 'register']);
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
+Route::get('/users/{id}/edit', [AdminController::class, 'edit']);
+Route::post('/users/{id}/update', [AdminController::class, 'update']);
+Route::post('/users/{id}/upload-photo', [AdminController::class, 'uploadPhoto']);
+Route::delete('/users/photo/{photo_id}', [AdminController::class, 'deletePhoto']);
+Route::delete('/users/{id}/delete', [AdminController::class, 'deleteUser']);
+
+Route::post('/users/{id}/update-chartphoto', [AdminController::class, 'updateChartPhoto']);
+Route::delete('/users/{id}/delete-chartphoto', [AdminController::class, 'deleteChartPhoto']);
+
+
 Route::post('/users/{id}/approve', [AdminController::class, 'approve'])->name('users.approve');
 
 
@@ -39,7 +49,10 @@ Route::get('/profile', function () {
 Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
 
 
-Route::get('/allprofiles',[ProfileController::class, 'index'])->name('allprofiles');
+// Route::get('/allprofiles',[ProfileController::class, 'index'])->name('allprofiles');
+
+Route::get('/allprofiles',[ProfileController::class, 'allProfiles'])->name('allprofiles');
+
 
 // Route::get('/profiles', [ProfileController::class, 'showProfile'])->name('profile.show');
 

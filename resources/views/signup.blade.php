@@ -49,12 +49,7 @@
                                         <input type="password" class="form-control" id="password"
                                             placeholder="Enter password" name="password">
                                     </div>
-                                    <div class="form-group form-check">
-                                        <input type="checkbox" class="form-check-input" name="agree" {{ old('agree') ? 'checked' : '' }}>
-                                        <label class="form-check-label">
-                                            Creating an account means you’re okay with our <a href="#!">Terms of Service</a> and Privacy Policy.
-                                        </label>
-                                    </div>
+                                   
                                     <button type="submit" class="btn btn-primary">Create Account</button>
                                 </form>
                             </div>
@@ -66,6 +61,29 @@
         </div>
     </div>
 </section>
+
+
+@if ($errors->any())
+<script>
+    Swal.fire({
+        title: 'Validation Error!',
+        html: "{!! implode('<br>', $errors->all()) !!}",
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });
+</script>
+@endif
+
+@if(session('error'))
+<script>
+    Swal.fire({
+        title: 'Error!',
+        text: "{{ session('error') }}",
+        icon: 'error',
+        confirmButtonText: 'OK'
+    });
+</script>
+@endif
 
 
 

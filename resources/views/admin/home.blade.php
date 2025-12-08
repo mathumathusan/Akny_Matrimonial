@@ -28,6 +28,7 @@
                           <th>Status</th>
                           <th>Approve</th>
                           <th>View</th>
+                           <th>Edit</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -56,6 +57,12 @@
 
 
                           </td>
+                          <td>
+    <a href="{{ url('/users/'.$user->id.'/edit') }}" class="btn btn-sm btn-primary">
+        <i class="fa fa-edit"></i>
+    </a>
+</td>
+
                         </tr>
                         @endforeach
                       </tbody>

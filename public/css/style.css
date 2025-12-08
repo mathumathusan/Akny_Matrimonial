@@ -3186,6 +3186,21 @@ table td{}
     border: 0px;
 }
 
+
+.send-query button {
+    background: rgb(199, 65, 88);
+    color: rgb(255, 255, 255);
+    font-size: 11px;
+    padding: 7px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block;
+    transition: all 0.5s ease 0s;
+    /* float: left; */
+    border: 0px;
+}
+
+
 .job-ser-cnt {
     float: left;
     width: 100%;

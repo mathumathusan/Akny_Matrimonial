@@ -24,6 +24,8 @@
       <script src="{{ asset('js/html5shiv.min.js') }}"></script>
       <script src="{{ asset('js/respond.min.js') }}"></script>
     <![endif]-->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -61,24 +63,25 @@
         <span class="menu-pop-clo"><i class="fa fa-times" aria-hidden="true"></i></span>
         <div class="inn">
             {{--<img src="https://aknymatrimony.com/wp-content/uploads/2024/06/Untitled-design-e1717264338223.png" alt="" loading="lazy" class="logo-brand-only">--}}
-            <img src="images/logo2.png"  alt="" loading="lazy" class="logo-brand-only">
-            
-            <p><strong>Best Wedding Matrimony</strong> lacinia viverra lectus. Fusce imperdiet ullamcorper metus eu fringilla. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            <img src="images/logo2.png" alt="" loading="lazy" class="logo-brand-only">
+
+            <p><strong>Akny Matrimony</strong> - Connecting hearts and creating lifelong relationships. We specialize in personalized matchmaking, ensuring the perfect match for every individual. Join thousands of happy couples who found their soulmates with us.</p>
             <ul class="menu-pop-info">
-                <li><a href="#!"><i class="fa fa-phone" aria-hidden="true"></i>+92 (8800) 68 - 8960</a></li>
-                <li><a href="#!"><i class="fa fa-whatsapp" aria-hidden="true"></i>+92 (8800) 68 - 8960</a></li>
-                <li><a href="#!"><i class="fa fa-envelope-o" aria-hidden="true"></i>help@company.com</a></li>
-                <li><a href="#!"><i class="fa fa-map-marker" aria-hidden="true"></i>3812 Lena Lane City Jackson Mississippi</a></li>
+                <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                <li><a href="/allprofiles"><i class="fa fa-users" aria-hidden="true"></i> Profiles</a></li>
+                <li><a href="/signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a></li>
+                <li><a href="/login"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+
             </ul>
             <div class="menu-pop-help">
                 <h4>Support Team</h4>
                 <div class="user-pro">
-                    <img src="{{ asset('images/profiles/1.jpg') }}" alt="" loading="lazy">
+                    <img src="images/sathees.jpg" alt="" loading="lazy">
                 </div>
                 <div class="user-bio">
-                    <h5>Ashley emyy</h5>
-                    <span>Senior personal advisor</span>
-                    <a href="enquiry.html" class="btn btn-primary btn-sm">Ask your doubts</a>
+                    <h5>Sathees</h5>
+                    <span>Contact No</span>
+                    <a href="enquiry.html" class="btn btn-primary btn-sm">0778488661</a>
                 </div>
             </div>
             <div class="menu-pop-soci">
@@ -102,7 +105,7 @@
                 <div class="hom-nav">
                     <!-- LOGO -->
                     <div class="logo">
-                        <span class="menu desk-menu" style="color: red;background-color: red;"><i></i><i></i><i></i></span>
+                        <span class="menu desk-menu1" style="color: red;background-color: red;"><i></i><i></i><i></i></span>
                         <a href="index.html" class="logo-brand">
                             {{--<img src="https://aknymatrimony.com/wp-content/uploads/2024/06/Untitled-design-e1717264338223.png" alt="" loading="lazy" class="ic-logo">--}}
                             <img src="images/logo2.png" alt="" loading="lazy" class="ic-logo">
@@ -113,6 +116,7 @@
                     <div class="bl">
                         <ul>
                             {{--<li class="smenu-pare"><span class="smenu">Explore</span></li>--}}
+                            <li><a href="/">Home</a></li>
                             <li><a href="/allprofiles">Profiles</a></li>
                             <li><a href="/signup">Register</a></li>
                             <li>
@@ -131,14 +135,14 @@
                     <div class="al">
                         <div class="head-pro">
                             @if(Session::has('user_id'))
-                                @php $user = \App\Models\Users::find(Session::get('user_id')); @endphp
-                                <a href="{{ url('/profile') }}">
-                                    <img src="{{ asset('images/profiles/1.jpg') }}" alt="Profile" style="border-radius: 50%;" loading="lazy">
-                                </a>
-                                <b>{{ $user->role ?? 'User' }}</b><br>
-                                <h4>{{ $user->name }}</h4>
+                            @php $user = \App\Models\Users::find(Session::get('user_id')); @endphp
+                            <a href="{{ url('/profile') }}">
+                                <img src="{{ asset('images/profiles/1.jpg') }}" alt="Profile" style="border-radius: 50%;" loading="lazy">
+                            </a>
+                            <b>{{ $user->role ?? 'User' }}</b><br>
+                            <h4>{{ $user->name }}</h4>
                             @else
-                                <img src="{{ asset('images/profiles/1.jpg') }}" style="border-radius: 50%;" loading="lazy">
+                            <img src="{{ asset('images/profiles/1.jpg') }}" style="border-radius: 50%;" loading="lazy">
                             @endif
                         </div>
                     </div>
@@ -155,7 +159,7 @@
     <section class="wed-hom-footer">
         <div class="container">
             <div class="row foot-supp">
-                <h2><span>Free support:</span> +92 (8800) 68 - 8960 &nbsp;&nbsp;|&nbsp;&nbsp; <span>Email:</span> info@example.com</h2>
+                <h2><span>Free support:</span> +94778488661 &nbsp;&nbsp;|&nbsp;&nbsp; <span>Email:</span> vsathees1@gmail.com</h2>
             </div>
         </div>
     </section>
@@ -165,7 +169,7 @@
         <div class="cr">
             <div class="container">
                 <div class="row">
-                    <p>Copyright © <span id="cry">2025</span> <a href="#!" target="_blank">AgnyItSolutions.com</a> All rights reserved.</p>
+                    <p>Copyright © <span id="crys">{{date('Y ')}}</span> <a href="#!" target="_blank">AgnyItSolutions</a> All rights reserved.</p>
                 </div>
             </div>
         </div>
@@ -178,6 +182,8 @@
     <script src="{{ asset('js/select-opt.js') }}"></script>
     <script src="{{ asset('js/slick.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+
+
 </body>
 
 </html>

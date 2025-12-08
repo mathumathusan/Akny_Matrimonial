@@ -10,8 +10,10 @@ $(document).ready(function () {
     "use strict";
 
     //MOBILE MENU HIDE AND SHOW
-    $('.desk-menu').on('click', function () {
+    $('.desk-menu1').on('click', function () {
+       alert("clicked");
         $('.menu-pop1, .pop-bg').addClass('act');
+         console.log("clicked")
     });
     $('.menu-pop-clo').on('click', function () {
         $('.menu-pop, .pop-bg').removeClass('act');
