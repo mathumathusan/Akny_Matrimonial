@@ -98,9 +98,9 @@ class ProfileController extends Controller
     public function allProfiles(Request $request)
     {
 
-        if (!Session::has('user_id')) {
-            return redirect('/login');
-        }
+        // if (!Session::has('user_id')) {
+        //     return redirect('/login');
+        // }
         // JOIN photos same as index()
         $profiles = DB::table('profiles')
             ->leftJoin('profile_photos', 'profiles.id', '=', 'profile_photos.profile_id')
@@ -168,6 +168,9 @@ class ProfileController extends Controller
 
     public function showProfile($id)
     {
+         if (!Session::has('user_id')) {
+            return redirect('/login');
+        }
         $profile = DB::table('profiles')
             ->leftJoin('profile_photos', 'profiles.id', '=', 'profile_photos.profile_id')
             ->select(
