@@ -47,12 +47,15 @@ class RegisterController extends Controller
             ]);
 
             // Create user
-            Users::create([
+            $user = Users::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'password' => Hash::make($request->password),
             ]);
+
+            // $user->member_id = 'AKNY' . str_pad($user->id, 6, '0', STR_PAD_LEFT);
+            // $user->save();
 
             // Redirect to login with success alert
             return redirect('/login')->with('success', 'Registration successful!');

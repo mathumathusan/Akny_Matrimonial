@@ -523,6 +523,9 @@ img{
 
 .hom-nav {
     width: 100%;
+    display: flex;
+    align-items: center;
+    height: 50px;
 }
 
 .logo {
@@ -534,8 +537,9 @@ img{
 .logo-brand {
       display: inline-block;
     margin-left: 8px;
-    margin-top: -10px;
-    width: 125px;
+    margin-top: 5px;
+    
+    width: 60px;
 }
 
 /*-------------------------------------------------------*/
@@ -694,10 +698,38 @@ img{
     display: none;
 }
 
-.hom-nav .ic-logo {
-    width: 230px;
+/* .hom-nav .ic-logo {
+    width: 100px;
+    height: 50px;
+border: 1px solid #d3d3d3;
+
     padding-top: 2px;
+    
+} */
+
+
+/* Base styles for the logo */
+.hom-nav .ic-logo {
+    width: 250px;
+    height: 80px;      /* Set a fixed height that matches your desired navbar height */
+    object-fit: contain; /* This prevents stretching/cropping */
+    display: block;
+    padding: 5px 0;
 }
+
+/* Mobile responsive override */
+@media (max-width: 768px) {
+    .hom-nav .ic-logo {
+        width: 100px;   /* Shrink the logo on mobile */
+        height: 60px; 
+        margin-top: 5px; /* Reduce height to match smaller mobile navbar */
+    }
+    .logo-brand {
+        width: 50px; /* Adjust the brand logo size on mobile */
+        margin-top: 12px; /* Adjust top margin for better alignment */
+    }
+}
+
 
 .hom-nav .bl {
     margin: 0px;
@@ -6938,18 +6970,20 @@ span.mail::before {
     position: relative;
 }
 
-.hom-top:before,
-.pg-soon:before {
+/* .hom-top:before,.pg-soon:before {
     content: '';
     position: fixed;
     top: 125px;
     left: 0;
-    width: 188px;
-    height: 188px;
-    background: url('../images/leaf/5.png') no-repeat;
-    background-size: 300px;
-    background-position: -78px -70px;
-}
+    width: 250px;   
+    height: 250px; 
+    background: url('../images/leaf/12.png') no-repeat;
+    background-size: contain; 
+    background-position: center;
+    z-index: 1;
+} */
+
+
 
 .hom-top:after,
 .pg-soon:after {
@@ -6957,11 +6991,11 @@ span.mail::before {
     position: fixed;
     bottom: 0;
     right: 0;
-    width: 123px;
-    height: 300px;
-    background: url('../images/leaf/8.png') no-repeat;
-    background-size: 121px;
-    background-position: center right;
+    width: 250px;   /* Increased width to fit the wider musician image */
+    height: 250px;  
+    background: url('../images/leaf/13.png') no-repeat;
+    background-size: contain; /* Ensures the whole image fits within the box */
+    background-position: center;
 }
 
 .ban-wedd {

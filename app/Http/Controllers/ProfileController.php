@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -67,6 +68,14 @@ class ProfileController extends Controller
                 'expectation' => $request->expectation,
             ]);
 
+            $memberId = 'AKNY' . str_pad($profileId, 6, '0', STR_PAD_LEFT);
+
+            DB::table('profiles')
+                ->where('id', $profileId)
+                ->update([
+                    'member_id' => $memberId
+                ]);
+
             // Upload multiple photos
             if ($request->hasFile('photos')) {
                 foreach ($request->file('photos') as $photo) {
@@ -93,6 +102,139 @@ class ProfileController extends Controller
                 ->withInput();
         }
     }
+
+    public function edit()
+    {
+        $profile = DB::table('profiles')
+            ->where('user_id', Auth::id())
+            ->first();
+
+        // $photos = DB::table('profile_photos')
+        //     ->where('profile_id', $profile->id)
+        //     ->pluck('photo_path');
+         $photos = collect();
+
+    if ($profile) {
+        $photos = DB::table('profile_photos')
+            ->where('profile_id', $profile->id)
+            ->pluck('photo_path');
+    }
+
+        return view('profile_edit2', compact('profile','photos'));
+    }
+
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'country_of_residence' => 'required|string|max:255',
+            'dob' => 'required|date',
+            'gender' => 'required|in:male,female',
+            'height' => 'nullable|string|max:50',
+            'weight' => 'nullable|string|max:50',
+            'religion' => 'nullable|string|max:50',
+            'complexion' => 'nullable|string|max:50',
+            'rasi' => 'nullable|string|max:50',
+            'nakshatra' => 'nullable|string|max:50',
+            'education_level' => 'nullable|string|max:50',
+            'marital_status' => 'nullable|string|max:50',
+            'job' => 'nullable|string|max:100',
+            'caste' => 'nullable|string|max:50',
+            'register_person_name' => 'nullable|string|max:255',
+            'phone_number' => 'nullable|string|max:50',
+            'expectation' => 'nullable|string|max:255',
+        ]);
+
+        $profile = DB::table('profiles')
+            ->where('user_id', Auth::id())
+            ->first();
+
+        $data = [
+            'name' => $request->name,
+            'country_of_residence' => $request->country_of_residence,
+            'dob' => $request->dob,
+            'gender' => $request->gender,
+            'height' => $request->height,
+            'weight' => $request->weight,
+            'religion' => $request->religion,
+            'complexion' => $request->complexion,
+            'rasi' => $request->rasi,
+            'nakshatra' => $request->nakshatra,
+            'education_level' => $request->education_level,
+            'marital_status' => $request->marital_status,
+            'job' => $request->job,
+            'caste' => $request->caste,
+            'register_person_name' => $request->register_person_name,
+            'phone_number' => $request->phone_number,
+            'expectation' => $request->expectation,
+        ];
+
+        // if ($request->hasFile('chartphoto')) {
+        //     $data['chartphoto'] = $request->file('chartphoto')->store('charts', 'public');
+        // }
+
+        if ($request->hasFile('chartphoto')) {
+
+            // Delete old chart (optional)
+            if ($profile->chartphoto && Storage::disk('public')->exists($profile->chartphoto)) {
+                Storage::disk('public')->delete($profile->chartphoto);
+            }
+
+            // Upload new chart
+            $data['chartphoto'] = $request->file('chartphoto')->store('charts', 'public');
+        }
+
+        DB::table('profiles')
+            ->where('id', $profile->id)
+            ->update($data);
+
+        // if ($request->hasFile('photos')) {
+
+        //     foreach ($request->file('photos') as $photo) {
+
+        //         $photoPath = $photo->store('photos', 'public');
+
+        //         DB::table('profile_photos')->insert([
+        //             'profile_id' => $profile->id,
+        //             'photo_path' => $photoPath,
+        //         ]);
+        //     }
+        // }
+
+        if ($request->hasFile('photos')) {
+
+            // Delete old image files
+            $oldPhotos = DB::table('profile_photos')
+                ->where('profile_id', $profile->id)
+                ->get();
+
+            foreach ($oldPhotos as $oldPhoto) {
+                if (Storage::disk('public')->exists($oldPhoto->photo_path)) {
+                    Storage::disk('public')->delete($oldPhoto->photo_path);
+                }
+            }
+
+            // Delete old database records
+            DB::table('profile_photos')
+                ->where('profile_id', $profile->id)
+                ->delete();
+
+            // Save new photos
+            foreach ($request->file('photos') as $photo) {
+
+                $photoPath = $photo->store('photos', 'public');
+
+                DB::table('profile_photos')->insert([
+                    'profile_id' => $profile->id,
+                    'photo_path' => $photoPath,
+                ]);
+            }
+        }
+
+        return back()->with('success', 'Profile updated successfully!');
+    }
+
 
 
     public function allProfiles(Request $request)
@@ -168,7 +310,7 @@ class ProfileController extends Controller
 
     public function showProfile($id)
     {
-         if (!Session::has('user_id')) {
+        if (!Session::has('user_id')) {
             return redirect('/login');
         }
         $profile = DB::table('profiles')

@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="keyword" content="">
     <!--== FAV ICON(BROWSER TAB ICON) ==-->
-    <link rel="shortcut icon" href="{{ asset('images/fav.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('images/logo4.jpeg') }}" type="image/x-icon">
     <!--== CSS FILES ==-->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
@@ -68,6 +68,7 @@
             <p><strong>Akny Matrimony</strong> - Connecting hearts and creating lifelong relationships. We specialize in personalized matchmaking, ensuring the perfect match for every individual. Join thousands of happy couples who found their soulmates with us.</p>
             <ul class="menu-pop-info">
                 <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                <li><a href="/profile"><i class="fa fa-user-plus" aria-hidden="true"></i> Create Profile</a></li>
                 <li><a href="/allprofiles"><i class="fa fa-users" aria-hidden="true"></i> Profiles</a></li>
                 <li><a href="/signup"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a></li>
                 <li><a href="/login"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
@@ -105,10 +106,10 @@
                 <div class="hom-nav">
                     <!-- LOGO -->
                     <div class="logo">
-                        <span class="menu desk-menu1" style="color: red;background-color: red;"><i></i><i></i><i></i></span>
+                        <span class="menu desk-menu1" style="color: red;background-color: red;margin-top: 25px;"><i></i><i></i><i></i></span>
                         <a href="index.html" class="logo-brand">
                             {{--<img src="https://aknymatrimony.com/wp-content/uploads/2024/06/Untitled-design-e1717264338223.png" alt="" loading="lazy" class="ic-logo">--}}
-                            <img src="images/logo2.png" alt="" loading="lazy" class="ic-logo">
+                            <img src="images/logo4.jpeg" alt="" loading="lazy" class="ic-logo">
                         </a>
                     </div>
 

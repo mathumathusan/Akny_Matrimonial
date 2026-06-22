@@ -39,7 +39,7 @@
 <!-- SUB-HEADING -->
 <section>
 
-   
+
     <div class="all-pro-head">
         <div class="container">
             <div class="row">
@@ -256,19 +256,20 @@
 
                                     <!-- PROFILE NAME -->
                                     <div class="pro-detail">
-                                        <h4><a href="{{ url('profile/'.$profile->id) }}">{{ $profile->name }}</a></h4>
+                                        <h4><a href="{{ url('profile/'.$profile->id) }}">{{$profile->member_id }}</a></h4>
+                                        
                                         <div class="pro-bio">
                                             <span>{{ $profile->education_level ?? 'N/A' }}</span>
                                             <span>{{ $profile->job ?? 'N/A' }}</span>
                                             <span>{{ \Carbon\Carbon::parse($profile->dob)->age }} Years old</span>
                                             <span>Height: {{ $profile->height ?? 'N/A' }}</span>
                                         </div>
-                                        <div class="links">
+                                        <!-- <div class="links">
                                             <span class="cta-chat">Chat now</span>
                                             <a href="tel:{{ $profile->phone_number }}">WhatsApp</a>
                                             <a href="#!" class="cta cta-sendint" data-bs-toggle="modal" data-bs-target="#sendInter">Send interest</a>
                                             <a href="{{ url('profile/'.$profile->id) }}">More details</a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <!-- END PROFILE NAME -->
 
@@ -398,14 +399,14 @@
 
 
 @if(session('success'))
-    <script>
-        Swal.fire({
-            title: 'Success!',
-            text: "{{ session('success') }}",
-            icon: 'success',
-            confirmButtonText: 'OK'
-        });
-    </script>
+<script>
+    Swal.fire({
+        title: 'Success!',
+        text: "{{ session('success') }}",
+        icon: 'success',
+        confirmButtonText: 'OK'
+    });
+</script>
 @endif
 
 

@@ -42,11 +42,14 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/profile', function () {
-    return view('profile_edit');
-});
+// Route::get('/profile', function () {
+//     return view('profile_edit');
+// });
 
 Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
 
 // Route::get('/allprofiles',[ProfileController::class, 'index'])->name('allprofiles');

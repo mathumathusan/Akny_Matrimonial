@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="hom-ban">
                         <div class="ban-tit">
-                            <span><i class="no1">#1</i> Matrimony</span>
+                            <span><i class="no1">Akny</i> Matrimony</span>
                             <h1>Find your<br><b>Right Match</b> here</h1>
                             <p>Most trusted Matrimony Brand in the World.</p>
                         </div>
